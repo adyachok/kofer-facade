@@ -12,7 +12,7 @@
         <tbody>
             <tr *ngFor="let modelMetadata of models; let i = index">
             <th scope="row">{{ i + 1}}</th>
-            <td><a href="/model/{{modelMetadata._id}}">{{ modelMetadata.name }}</a></td>
+            <td><a href="/models/{{modelMetadata._id}}">{{ modelMetadata.name }}</a></td>
             <td>{{ modelMetadata.latest_version }}</td>
             </tr>
         </tbody>

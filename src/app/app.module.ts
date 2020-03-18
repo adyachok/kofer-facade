@@ -11,6 +11,7 @@ import { TaskDetailComponent } from './task-detail/task-detail.component';
 import { from } from 'rxjs';
 import { TaskService } from './services/task.service';
 import { ModelService } from './services/model.service';
+import { NgxJsonViewerModule } from 'ngx-json-viewer';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,10 @@ import { ModelService } from './services/model.service';
         component: ModelListComponent
       },
       {
+        path: 'models/:model_id',
+        component: ModelDetailComponent
+      },
+      {
         path: 'tasks',
         component: TaskListComponent
       },
@@ -36,7 +41,8 @@ import { ModelService } from './services/model.service';
         path: 'tasks/:task_id',
         component: TaskDetailComponent
       }
-    ])
+    ]),
+    NgxJsonViewerModule
   ],
   providers: [TaskService, ModelService],
   bootstrap: [AppComponent]
