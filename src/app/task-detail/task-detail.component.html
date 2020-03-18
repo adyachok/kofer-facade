@@ -1,1 +1,5 @@
-<p>task-detail works!</p>
+<p>id: {{ task?._id }}</p>
+<p>model name: {{ task?.model_name }}</p>
+<p>state: {{ task?.state}}</p>
+<pre>call paramenters: {{ task?.data | json }}</pre>
+<p *ngIf="task?.result">{{ task.result | json }}</p>
