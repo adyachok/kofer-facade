@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ModelService } from '../services/model.service';
+import { ModelMetadata } from '../models/model-metadata';
 
 @Component({
   selector: 'app-model-list',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ModelListComponent implements OnInit {
 
-  constructor() { }
+  models: ModelMetadata[]
+
+  constructor(private modelService: ModelService) { }
 
   ngOnInit() {
+    this.modelService.getModelsList().subscribe((objs) => {
+      console.log(objs);
+      this.models = objs.payload.map((modelMetadata) => ModelMetadata.fromJson(modelMetadata));
+    })
   }
 
 }

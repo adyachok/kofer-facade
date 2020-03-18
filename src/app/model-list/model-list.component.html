@@ -1,1 +1,21 @@
-<p>model-list works!</p>
+<div class="border border-secondary my-3 px-3 rounded">
+    <h2 class="my-5">Avalable models</h2>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+            <th scope="col">#</th>
+            <th scope="col">Model Name</th>
+            <th scope="col">Version</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let modelMetadata of models; let i = index">
+            <th scope="row">{{ i + 1}}</th>
+            <td><a href="/model/{{modelMetadata._id}}">{{ modelMetadata.name }}</a></td>
+            <td>{{ modelMetadata.latest_version }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+

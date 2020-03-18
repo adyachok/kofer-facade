@@ -1,1 +1,20 @@
-<p>task-list works!</p>
+<div class="border border-secondary my-3 px-3 rounded">
+    <h2 class="my-5">Tasks</h2>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+            <th scope="col">#</th>
+            <th scope="col">Model Name</th>
+            <th scope="col">Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let task of tasks; let i = index">
+            <th scope="row">{{ i + 1}}</th>
+            <td><a href="/task/{{task._id}}">{{ task.model_name }}</a></td>
+            <td>{{ task.state }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,9 @@
+figure{
+    height: 17em;
+    overflow:hidden; /*hide bounds of image */
+    margin:0;   /*reset margin of figure tag*/
+ }
+ figure img{
+    display:block; /*remove inline-block spaces*/
+    width:100%; /*make image streatch*/
+ }
