@@ -31,6 +31,10 @@ import { ModelService } from './services/model.service';
       {
         path: 'tasks',
         component: TaskListComponent
+      },
+      {
+        path: 'tasks/:task_id',
+        component: TaskDetailComponent
       }
     ])
   ],
