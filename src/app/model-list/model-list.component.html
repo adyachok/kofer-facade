@@ -7,6 +7,7 @@
             <th scope="col">#</th>
             <th scope="col">Model Name</th>
             <th scope="col">Version</th>
+            <th scope="col">Action</th>
             </tr>
         </thead>
         <tbody>
@@ -14,6 +15,7 @@
             <th scope="row">{{ i + 1}}</th>
             <td><a href="/models/{{modelMetadata._id}}">{{ modelMetadata.name }}</a></td>
             <td>{{ modelMetadata.latest_version }}</td>
+            <td><span [id]="modelMetadata._id" class="fa fa-play" (click)="triggerNewTaskCreation($event)"></span></td>
             </tr>
         </tbody>
     </table>

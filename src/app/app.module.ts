@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import {HttpClientModule} from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import {ReactiveFormsModule} from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { ModelListComponent } from './model-list/model-list.component';
@@ -12,6 +13,7 @@ import { from } from 'rxjs';
 import { TaskService } from './services/task.service';
 import { ModelService } from './services/model.service';
 import { NgxJsonViewerModule } from 'ngx-json-viewer';
+import { NewTaskFormComponent } from './new-task-form/new-task-form.component';
 
 @NgModule({
   declarations: [
@@ -19,11 +21,13 @@ import { NgxJsonViewerModule } from 'ngx-json-viewer';
     ModelListComponent,
     ModelDetailComponent,
     TaskListComponent,
-    TaskDetailComponent
+    TaskDetailComponent,
+    NewTaskFormComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
+    ReactiveFormsModule,
     RouterModule.forRoot([
       {
         path: 'models',
@@ -40,6 +44,10 @@ import { NgxJsonViewerModule } from 'ngx-json-viewer';
       {
         path: 'tasks/:task_id',
         component: TaskDetailComponent
+      },
+      {
+        path: 'new_task',
+        component: NewTaskFormComponent
       }
     ]),
     NgxJsonViewerModule

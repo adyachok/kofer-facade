@@ -1,0 +1,32 @@
+<h2 class="p-4">Create task</h2>
+
+<div *ngIf="this.modelMetatada !== undefined;else elseBlock" class="d-flex justify-content-center text-center">
+  <form [formGroup]="form" class="w-50 p-10">
+    <table class="table table-striped">
+      <tbody>
+        <tr>
+          <td>Model name</td>
+          <td>{{ this.modelMetatada.name }}</td>
+        </tr>
+        <tr *ngFor="let range of this.modelMetatada.business_metadata.data.unitSteps[0].params.training_ranges">
+          <td class="w-50">{{ range.name }}</td>
+          <td class="w-50">
+            <div class="form-group">
+              <input class="form-control" type="number" id="{{ range.name }}" placeholder="Your value">
+            </div>
+          </td>
+        </tr>
+      </tbody>
+
+    </table>
+
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
+<ng-template #elseBlock>
+  <div  class="alert alert-info text-center" role="alert">
+    Before create a task, please, select a model.
+  </div>
+</ng-template>
+
