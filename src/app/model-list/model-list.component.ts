@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ModelService } from '../services/model.service';
 import { ModelMetadata } from '../models/model-metadata';
-import { DataService } from '../service/data.service';
+import { DataService } from '../services/data.service';
 import { Router } from '@angular/router';
 
 @Component({

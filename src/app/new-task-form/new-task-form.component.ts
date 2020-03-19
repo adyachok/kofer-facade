@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { DataService } from '../service/data.service';
+import { DataService } from '../services/data.service';
 import { ModelSelection } from '../models/model-selection';
 import { ModelService } from '../services/model.service';
 import { ModelMetadataResponse } from '../models/model-metadata-response';
