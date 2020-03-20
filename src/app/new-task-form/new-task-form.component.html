@@ -8,20 +8,23 @@
           <td>Model name</td>
           <td>{{ this.modelMetatada.name }}</td>
         </tr>
-        <tr *ngFor="let range of this.modelMetatada.business_metadata.data.unitSteps[0].params.training_ranges">
-          <td class="w-50">{{ range.name }}</td>
-          <td class="w-50">
-            <div class="form-group">
-              <input class="form-control" type="number" id="{{ range.name }}" placeholder="Your value">
-            </div>
-          </td>
+        <ng-container *ngFor="let unit_step of this.modelMetatada.business_metadata.data.unitSteps">
+          <tr *ngFor="let range of unit_step.params.training_ranges">
+            <td class="w-50">{{ range.name }}</td>
+            <td class="w-50">
+              <div class="form-group">
+                <input class="form-control" type="number" formControlName="{{ unit_step.name + '.' + range.name + '.' + range.type }}"  id="{{ range.name }}" placeholder="Your value">
+              </div>
+            </td>
         </tr>
+        </ng-container>
+        
       </tbody>
 
     </table>
 
 
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" [disabled]="!form.valid" class="btn btn-primary" (click)="submitTask($event)">Submit</button>
   </form>
 </div>
 <ng-template #elseBlock>

@@ -7,7 +7,8 @@ import { ModelSelection } from '../models/model-selection';
   providedIn: 'root'
 })
 export class DataService {
-
+  // Look: https://fireship.io/lessons/sharing-data-between-angular-components-four-methods/
+  
   private modelSelectionSource = new BehaviorSubject<string>(undefined);
   currentModelIdSelection = this.modelSelectionSource.asObservable();
 

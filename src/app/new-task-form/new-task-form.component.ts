@@ -5,6 +5,10 @@ import { ModelSelection } from '../models/model-selection';
 import { ModelService } from '../services/model.service';
 import { ModelMetadataResponse } from '../models/model-metadata-response';
 import { ModelMetadata } from '../models/model-metadata';
+import { CalculationItem } from '../models/calculation-item';
+import { ModelTask } from '../models/model-task';
+import { TaskService } from '../services/task.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-new-task-form',
@@ -16,7 +20,11 @@ export class NewTaskFormComponent implements OnInit {
   form: FormGroup;
   modelMetatada: ModelMetadata;
 
-  constructor(private dataService: DataService, private modelService: ModelService) { }
+  constructor(
+    private dataService: DataService, 
+    private modelService: ModelService, 
+    private taskService: TaskService, 
+    private router: Router) { }
 
   ngOnInit() {
     this.dataService.currentModelIdSelection.subscribe(
@@ -25,8 +33,8 @@ export class NewTaskFormComponent implements OnInit {
           this.modelService.getModelMetadataById(modelId).subscribe(
           (modelMetadateResponse: ModelMetadataResponse) => {
             this.modelMetatada = ModelMetadata.fromJson(modelMetadateResponse.payload);
-            console.log(this.modelMetatada)
             this.buildFormGroup();
+            console.log(this.form);
           });
         }        
       });
@@ -34,10 +42,31 @@ export class NewTaskFormComponent implements OnInit {
 
   buildFormGroup(): void {
     const fg = {};
-    for (const item of this.modelMetatada.business_metadata.data.unitSteps[0].params.training_ranges) {
-      fg[item.name] = new FormControl(item.name, [Validators.required])    
+    for (let us of this.modelMetatada.business_metadata.data.unitSteps) {
+      for (let training_range of us.params.training_ranges) {
+        const control_name = us.name + "." + training_range.name + "." + training_range.type;
+        fg[control_name] = new FormControl('', [Validators.required])  
+      }        
     }
     this.form = new FormGroup(fg)
+  }
+
+  submitTask(event: Event) {
+    const calculationItems: CalculationItem[] = [];
+    Object.keys(this.form.controls).forEach(key => {
+      // this.form.controls[key].markAsDirty();
+      const [unit_step, range_name, range_type] = key.split(".");
+      const value = this.form.controls[key].value
+      let calculationItem = new CalculationItem(range_name, range_type, value , unit_step);
+      calculationItems.push(calculationItem);
+    });
+    // TODO: send data on remote Server
+    // TODO: redirect to task detail page
+    const modelTask = new ModelTask(undefined, this.modelMetatada.name, undefined, calculationItems, undefined);
+    this.taskService.createTask(modelTask).subscribe((response) => {
+      const task_id = response.payload.task_id;
+      this.router.navigate(['tasks/' + task_id]);
+    })
   }
 
 }

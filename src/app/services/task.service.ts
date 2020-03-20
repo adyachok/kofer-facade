@@ -4,6 +4,7 @@ import {Observable} from 'rxjs/internal/Observable';
 import { TaskListResponse } from '../models/task-list-response';
 import { ModelTaskResponse } from '../models/model-task-response';
 import { environment } from 'src/environments/environment';
+import { ModelTask } from '../models/model-task';
 
 const SERVER_URL = 'http://localhost:8089'
 
@@ -20,5 +21,9 @@ export class TaskService {
 
   findTaskById(taskId: string): Observable<ModelTaskResponse> {
     return this.http.get<ModelTaskResponse>(environment.serverUrl + "/task/" + taskId + "/");
+  }
+
+  createTask(task: ModelTask): Observable<any> {
+    return this.http.post(environment.serverUrl + '/task/', task);
   }
 }

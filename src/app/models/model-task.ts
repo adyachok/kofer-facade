@@ -4,10 +4,10 @@ export class ModelTask {
     public _id: string
     public model_name: string
     public result: [any]
-    public data: [CalculationItem]
+    public data: CalculationItem[];
     public state: string
 
-    constructor(_id: string, model_name: string, result: any, data: [CalculationItem], state: string) {
+    constructor(_id: string, model_name: string, result: any, data: CalculationItem[], state: string) {
         this._id = _id;
         this.model_name = model_name;
         this.result = result;
