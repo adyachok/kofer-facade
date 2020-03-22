@@ -14,6 +14,9 @@ import { TaskService } from './services/task.service';
 import { ModelService } from './services/model.service';
 import { NgxJsonViewerModule } from 'ngx-json-viewer';
 import { NewTaskFormComponent } from './new-task-form/new-task-form.component';
+import { RunnerDescriptionComponent } from './runner-description/runner-description.component';
+import { HighlightModule } from 'ngx-highlightjs';
+
 
 @NgModule({
   declarations: [
@@ -22,7 +25,8 @@ import { NewTaskFormComponent } from './new-task-form/new-task-form.component';
     ModelDetailComponent,
     TaskListComponent,
     TaskDetailComponent,
-    NewTaskFormComponent
+    NewTaskFormComponent,
+    RunnerDescriptionComponent
   ],
   imports: [
     BrowserModule,
@@ -51,7 +55,8 @@ import { NewTaskFormComponent } from './new-task-form/new-task-form.component';
         component: NewTaskFormComponent
       }
     ]),
-    NgxJsonViewerModule
+    NgxJsonViewerModule,
+    HighlightModule
   ],
   providers: [TaskService, ModelService],
   bootstrap: [AppComponent]
