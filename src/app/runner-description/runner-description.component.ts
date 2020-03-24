@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import {Runner} from '../models/runner'
+import { RunnerService } from '../services/runner.service';
+import { ActivatedRoute, ParamMap } from '@angular/router';
+
 
 @Component({
   selector: 'app-runner-description',
@@ -7,9 +11,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RunnerDescriptionComponent implements OnInit {
 
-  constructor() { }
+  activeTab: string = 'description';
+
+  runner : Runner;
+ 
+
+  constructor(private runnerService: RunnerService, private route: ActivatedRoute) { }
+
+  setActiveTab(tab: string) {
+    this.activeTab = tab;
+  }
 
   ngOnInit() {
+    this.route.paramMap.subscribe((params: ParamMap) => {
+      const runner_id = params.get('runner_id');
+      this.runnerService.getRunnerById(runner_id).subscribe((runner: Runner) => {
+        this.runner = runner;
+      })
+  })
+    
   }
+
 
 }

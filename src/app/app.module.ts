@@ -15,8 +15,16 @@ import { ModelService } from './services/model.service';
 import { NgxJsonViewerModule } from 'ngx-json-viewer';
 import { NewTaskFormComponent } from './new-task-form/new-task-form.component';
 import { RunnerDescriptionComponent } from './runner-description/runner-description.component';
-import { HighlightModule } from 'ngx-highlightjs';
+import { HighlightModule, HIGHLIGHT_OPTIONS, HighlightOptions } from 'ngx-highlightjs';
+import { RunnerListComponent } from './runner-list/runner-list.component';
+import { HomeComponent } from './home/home.component';
 
+
+export function getHighlightLanguages() {
+  return {
+    python: () => import('highlight.js/lib/languages/python'),
+  };
+}
 
 @NgModule({
   declarations: [
@@ -26,7 +34,9 @@ import { HighlightModule } from 'ngx-highlightjs';
     TaskListComponent,
     TaskDetailComponent,
     NewTaskFormComponent,
-    RunnerDescriptionComponent
+    RunnerDescriptionComponent,
+    RunnerListComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -53,12 +63,34 @@ import { HighlightModule } from 'ngx-highlightjs';
       {
         path: 'new_task',
         component: NewTaskFormComponent
+      },
+      {
+        path: 'runners',
+        component: RunnerListComponent
+      },
+      {
+        path: 'runners/:runner_id',
+        component: RunnerDescriptionComponent
+      },
+      {
+        path: '',
+        component: HomeComponent
       }
     ]),
     NgxJsonViewerModule,
     HighlightModule
   ],
-  providers: [TaskService, ModelService],
+  providers: [
+    TaskService, 
+    ModelService,
+    {
+      provide: HIGHLIGHT_OPTIONS,
+      useValue: <HighlightOptions>{
+        languages: getHighlightLanguages(),
+        lineNumbers: true
+      }
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

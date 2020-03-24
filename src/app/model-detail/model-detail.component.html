@@ -1,5 +1,9 @@
 <!-- https://stackoverflow.com/questions/51105507/change-active-bootstrap-tab-inside-angular-component -->
-<ul class="nav nav-tabs">
+<div class="border-box">
+
+  <h2 class="p-4">Model description</h2>
+
+  <ul class="nav nav-tabs">
     <li class="nav-item">
       <a class="nav-link active" id="description-tab"  [ngClass]="{'active':activeTab==='description'}" (click)="setActiveTab('description')"
       data-toggle="tab" aria-controls="description">Description</a>
@@ -33,4 +37,6 @@
       </div>
     
   </div>
+</div>
+
 

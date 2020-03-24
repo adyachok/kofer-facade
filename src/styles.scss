@@ -1,1 +1,47 @@
 /* You can add global styles to this file, and also import other style files */
+// @import '~highlight.js/scss/androidstudio.scss';
+// @import "~bootstrap/scss/bootstrap.scss";
+
+body {
+    background-color: #A8D0E6 !important;
+}
+
+h2, h3 {
+    color: #24305E;
+}
+
+.border-box {
+    @extend .rounded-lg !optional;
+    border: 0.3rem solid  #374785;
+    padding: 1rem;
+    border-radius: 1rem;
+    background-color: whitesmoke;
+}
+
+.zz-nav {
+    color: whitesmoke !important;
+    font-weight: bold;
+    font-size: 1.5rem !important;
+}
+
+.zz-nav:hover {
+    color: white !important;
+    font-size: 1.5rem !important;
+}
+
+.zz-brand {
+    color: whitesmoke !important;
+    font-weight: bold;
+    font-size: 3rem !important;
+    font-family: 'Rock Salt', cursive;
+    margin-right: 5rem !important;
+}
+
+.table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
+    background-color: #F8E9A1 !important;
+ }
+
+ .navbar-nav > li{
+    padding-left: 1rem;
+    padding-right:1rem;
+  }
