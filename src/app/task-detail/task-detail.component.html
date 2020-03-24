@@ -1,6 +1,6 @@
 <div class="border-box">
-    <h3 class="my-5">Task #{{ task?._id }}</h3>
-    <h4 class="my-5 ">Details</h4>
+    <h3>Task #{{ task?._id }}</h3>
+    <h4>Details</h4>
     <div class="row mx-4 text-monospace">
         <p>Model name: {{ task?.model_name }}</p>
     </div>
@@ -11,7 +11,7 @@
         <p *ngIf="task?.result">Result: {{ task.result | json }}</p>
     </div>
 
-    <h4 class="my-5 ">Parameters</h4>
+    <h4>Parameters</h4>
 
     <table class="table table-striped">
         <thead>
