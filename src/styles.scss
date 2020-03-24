@@ -29,16 +29,19 @@ h4 {
     border-radius: 1rem;
     background-color: whitesmoke;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    padding-bottom: 5rem;
 }
 
 .border-box-inner {
-    border: 0.2rem solid transparent;
+    border: 0.12rem solid  #F8E9A1;
     padding: 1rem;
     border-radius: 1.1rem;
-    background-color: #F8E9A1;
+    background-color: white;
     margin-bottom: 2rem;
     margin-top: 2rem;
     color: #374785;
+    font-size: 1.2rem;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .zz-nav {
@@ -68,3 +71,12 @@ h4 {
     padding-left: 1rem;
     padding-right:1rem;
   }
+
+  .fa-play-circle-o {
+      color: #374785;
+      cursor: pointer;
+  }
+
+  .fa-play-circle-o:hover {
+    color: #24305E;
+}

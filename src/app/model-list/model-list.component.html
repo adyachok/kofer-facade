@@ -15,7 +15,7 @@
             <th scope="row">{{ i + 1}}</th>
             <td><a href="/models/{{modelMetadata._id}}">{{ modelMetadata.name }}</a></td>
             <td>{{ modelMetadata.latest_version }}</td>
-            <td><span [id]="modelMetadata._id" class="fa fa-play" (click)="triggerNewTaskCreation($event)"></span></td>
+            <td><i [id]="modelMetadata._id" class="fa fa-play-circle-o fa-lg" aria-hidden="true" (click)="triggerNewTaskCreation($event)" data-placement="top" ngbTooltip="Create an inference task"></i></td>
             </tr>
         </tbody>
     </table>

@@ -18,7 +18,7 @@ import { RunnerDescriptionComponent } from './runner-description/runner-descript
 import { HighlightModule, HIGHLIGHT_OPTIONS, HighlightOptions } from 'ngx-highlightjs';
 import { RunnerListComponent } from './runner-list/runner-list.component';
 import { HomeComponent } from './home/home.component';
-
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 export function getHighlightLanguages() {
   return {
@@ -78,7 +78,8 @@ export function getHighlightLanguages() {
       }
     ]),
     NgxJsonViewerModule,
-    HighlightModule
+    HighlightModule,
+    NgbModule
   ],
   providers: [
     TaskService, 
