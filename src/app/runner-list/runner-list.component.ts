@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RunnerService } from '../services/runner.service';
 import { Runner } from '../models/runner';
+import { RunnerListResponse } from '../models/runner-list-response';
 
 @Component({
   selector: 'app-runner-list',
@@ -14,8 +15,8 @@ export class RunnerListComponent implements OnInit {
   constructor(private runnerService: RunnerService) { }
 
   ngOnInit(): void {
-    this.runnerService.getRunners().subscribe((runners) => {
-      this.runners = runners;
+    this.runnerService.getRunners().subscribe((runnerListResponse: RunnerListResponse) => {
+      this.runners = runnerListResponse.payload;
     })
   }
 

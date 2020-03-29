@@ -6,7 +6,6 @@ import { ModelTaskResponse } from '../models/model-task-response';
 import { environment } from 'src/environments/environment';
 import { ModelTask } from '../models/model-task';
 
-const SERVER_URL = 'http://localhost:8089'
 
 @Injectable({
   providedIn: 'root'

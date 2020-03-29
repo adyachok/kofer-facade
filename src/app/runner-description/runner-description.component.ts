@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Runner} from '../models/runner'
 import { RunnerService } from '../services/runner.service';
 import { ActivatedRoute, ParamMap } from '@angular/router';
+import { RunnerResponse } from '../models/runner-response';
 
 
 @Component({
@@ -25,8 +26,8 @@ export class RunnerDescriptionComponent implements OnInit {
   ngOnInit() {
     this.route.paramMap.subscribe((params: ParamMap) => {
       const runner_id = params.get('runner_id');
-      this.runnerService.getRunnerById(runner_id).subscribe((runner: Runner) => {
-        this.runner = runner;
+      this.runnerService.getRunnerById(runner_id).subscribe((runnerResponse: RunnerResponse) => {
+        this.runner = runnerResponse.payload;
       })
   })
     
