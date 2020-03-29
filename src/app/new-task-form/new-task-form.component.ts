@@ -9,6 +9,12 @@ import { CalculationItem } from '../models/calculation-item';
 import { ModelTask } from '../models/model-task';
 import { TaskService } from '../services/task.service';
 import { Router } from '@angular/router';
+import { RunnerService } from '../services/runner.service';
+import { zip } from 'rxjs';
+import { RunnerListResponse } from '../models/runner-list-response';
+import { Runner } from '../models/runner';
+
+
 
 @Component({
   selector: 'app-new-task-form',
@@ -19,23 +25,34 @@ export class NewTaskFormComponent implements OnInit {
 
   form: FormGroup;
   modelMetatada: ModelMetadata;
+  runners: Runner[]
+  useRunner = false
 
   constructor(
     private dataService: DataService, 
     private modelService: ModelService, 
     private taskService: TaskService, 
-    private router: Router) { }
+    private router: Router, 
+    private runnerService: RunnerService) { }
 
   ngOnInit() {
+
     this.dataService.currentModelIdSelection.subscribe(
       (modelId: string) => {
         if (modelId !== undefined) {
-          this.modelService.getModelMetadataById(modelId).subscribe(
-          (modelMetadateResponse: ModelMetadataResponse) => {
-            this.modelMetatada = ModelMetadata.fromJson(modelMetadateResponse.payload);
-            this.buildFormGroup();
-            console.log(this.form);
-          });
+          const model$ = this.modelService.getModelMetadataById(modelId);
+          const runner$ = this.runnerService.getRunners();
+
+          zip(model$, runner$, 
+            (modelMetadateResponse: ModelMetadataResponse, 
+              runnerListResponse: RunnerListResponse) => ({modelMetadateResponse, runnerListResponse}))
+            .subscribe( pair => {
+              console.log(pair);
+              this.modelMetatada = ModelMetadata.fromJson(pair.modelMetadateResponse.payload);
+              this.runners = pair.runnerListResponse.payload as Runner[];
+              this.buildFormGroup();
+              console.log(this.form);
+            });      
         }        
       });
     }

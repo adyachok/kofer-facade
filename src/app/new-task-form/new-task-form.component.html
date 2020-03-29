@@ -33,6 +33,22 @@
       </table>
 
 
+      <div>
+        <div class="custom-control custom-checkbox">
+          <input type="checkbox" [checked]="useRunner" class="custom-control-input" id="customCheck1" (change)="useRunner = $event.target.checked">
+          <label class="custom-control-label" for="customCheck1">Run task with runner</label>
+        </div>
+        <!-- Disabled select-->
+
+        <select class="browser-default custom-select" [disabled]="!useRunner">
+          
+          <option value="" disabled selected>Choose runner</option>
+          <option value="{{ runner._id }}" *ngFor="let runner of runners; let i = index">{{runner.name}}&nbsp;-&nbsp;{{runner.department}}</option>
+        </select>
+        
+      </div>   
+
+
       <button type="submit" [disabled]="!form.valid" class="btn btn-primary"
         (click)="submitTask($event)">Submit</button>
     </form>
