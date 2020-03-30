@@ -2,26 +2,33 @@ import { CalculationItem } from './calculation-item'
 
 export class ModelTask {
     public _id: string
-    public model_name: string
+    public modelName: string
     public result: [any]
     public data: CalculationItem[];
     public state: string
+    public runnerId: string
+    public executionState: number = 0
 
-    constructor(_id: string, model_name: string, result: any, data: CalculationItem[], state: string) {
+    constructor(_id: string, modelName: string, result: any, data: CalculationItem[], state: string, runnerId: string = '', executionState: number = 0) {
         this._id = _id;
-        this.model_name = model_name;
+        this.modelName = modelName;
         this.result = result;
         this.data = data;
         this.state = state;
+        this.runnerId = runnerId;
+        this.executionState = executionState;
     }
 
     public static fromJson(obj: any): ModelTask {
         return new ModelTask(
             obj._id, 
-            obj.model_name, 
+            obj.modelName, 
             obj.result, 
             obj.data.map((o)=> CalculationItem.fromJson(o)), 
-            obj.state);
+            obj.state, 
+            obj?.runnerId,
+            obj?.executionState
+            );
     }
 
     public static createBlank(): ModelTask {

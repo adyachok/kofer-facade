@@ -2,10 +2,16 @@
     <h3>Task #{{ task?._id }}</h3>
     <h4>Details</h4>
     <div class="row mx-4 text-monospace">
-        <p>Model name: {{ task?.model_name }}</p>
+        <p>Model name: {{ task?.modelName }}</p>
+    </div>
+    <div class="row mx-4 text-monospace" *ngIf="task.runnerId">
+        <p>Runner: <a href="runners/{{task.runnerId}}">{{ task?.runnerId }}</a></p>
     </div>
     <div class="row mx-4 text-monospace">
         <p>State: {{ task?.state}}</p>
+    </div>
+    <div class="row mx-4 text-monospace">
+        <p>Execution state: {{ task?.executionState}} %</p>
     </div>
     <div class="row mx-4 text-monospace">
         <p *ngIf="task?.result">Result: {{ task.result | json }}</p>

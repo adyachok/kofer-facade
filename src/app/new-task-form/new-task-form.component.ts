@@ -13,6 +13,7 @@ import { RunnerService } from '../services/runner.service';
 import { zip } from 'rxjs';
 import { RunnerListResponse } from '../models/runner-list-response';
 import { Runner } from '../models/runner';
+import { TaskListResponse } from '../models/task-list-response';
 
 
 
@@ -27,6 +28,7 @@ export class NewTaskFormComponent implements OnInit {
   modelMetatada: ModelMetadata;
   runners: Runner[]
   useRunner = false
+  selectedRunner: Runner
 
   constructor(
     private dataService: DataService, 
@@ -65,25 +67,44 @@ export class NewTaskFormComponent implements OnInit {
         fg[control_name] = new FormControl('', [Validators.required])  
       }        
     }
+    fg['selectedRunnerCheckbox'] = new FormControl();
+    fg['selectedRunner'] = new FormControl({value:'', disabled: true});
     this.form = new FormGroup(fg)
   }
 
   submitTask(event: Event) {
+    const runnerSelectionControl = this.form.get('selectedRunner');
+
     const calculationItems: CalculationItem[] = [];
     Object.keys(this.form.controls).forEach(key => {
-      // this.form.controls[key].markAsDirty();
-      const [unit_step, range_name, range_type] = key.split(".");
-      const value = this.form.controls[key].value
-      let calculationItem = new CalculationItem(range_name, range_type, value , unit_step);
-      calculationItems.push(calculationItem);
+      if (!['selectedRunner', 'selectedRunnerCheckbox'].includes(key)) {
+        const [unit_step, range_name, range_type] = key.split(".");
+        const value = this.form.controls[key].value
+        let calculationItem = new CalculationItem(range_name, range_type, value , unit_step);
+        calculationItems.push(calculationItem);
+      }      
     });
     // TODO: send data on remote Server
     // TODO: redirect to task detail page
-    const modelTask = new ModelTask(undefined, this.modelMetatada.name, undefined, calculationItems, undefined);
+    let modelTask: ModelTask;
+    if (runnerSelectionControl.enabled) {
+      modelTask = new ModelTask(undefined, this.modelMetatada.name, undefined, calculationItems, undefined, runnerSelectionControl.value);
+    } else {
+      modelTask = new ModelTask(undefined, this.modelMetatada.name, undefined, calculationItems, undefined);
+    }    
     this.taskService.createTask(modelTask).subscribe((response) => {
       const task_id = response.payload.task_id;
       this.router.navigate(['tasks/' + task_id]);
     })
+  }
+
+  changeRunnerSelectionState() {
+    const control = this.form.get('selectedRunner');
+    if (control.disabled) {
+      control.enable();
+    } else {
+      control.disable();
+    }
   }
 
 }

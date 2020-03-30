@@ -12,7 +12,7 @@
         <tbody>
             <tr *ngFor="let task of tasks; let i = index">
             <th scope="row">{{ i + 1}}</th>
-            <td><a href="/tasks/{{task._id}}">{{ task.model_name }}</a></td>
+            <td><a href="/tasks/{{task._id}}">{{ task.modelName }}</a></td>
             <td>{{ task.state }}</td>
             </tr>
         </tbody>

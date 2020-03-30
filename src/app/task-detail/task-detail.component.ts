@@ -19,9 +19,25 @@ export class TaskDetailComponent implements OnInit {
       const task_id = params.get('task_id');
       this.taskService.findTaskById(task_id).subscribe((taskResponse) => {
         this.task = ModelTask.fromJson(taskResponse.payload);
-        console.log(this.task);
+        this.pollTaskUntillReady()
       });
     })
+    
+  }
+
+  pollTaskUntillReady(): void {    
+    if (!['FINISHED', 'ERROR'].includes(this.task.state)) {
+      setTimeout(() => {
+        this.taskService
+          .findTaskById(this.task._id)
+          .subscribe(
+            (taskResponse) => {
+              this.task = taskResponse.payload;
+              if (!['FINISHED', 'ERROR'].includes(this.task.state)) {
+                this.pollTaskUntillReady();
+              }
+            })} , 2000)
+    }
   }
 
 }
