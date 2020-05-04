@@ -20,9 +20,14 @@
               <td class="w-50">{{ range.name }}</td>
               <td class="w-50">
                 <div class="form-group">
-                  <input class="form-control" type="number"
+                  <textarea *ngIf="range.type == 'string'; else numberInput" class="form-control" type = "string"
                     formControlName="{{ unit_step.name + '.' + range.name + '.' + range.type }}" id="{{ range.name }}"
-                    placeholder="Your value">
+                    placeholder="Your value"> </textarea>
+                  <ng-template #numberInput>
+                    <input class="form-control" type="number"
+                      formControlName="{{ unit_step.name + '.' + range.name + '.' + range.type }}" id="{{ range.name }}"
+                      placeholder="Your value">
+                  </ng-template>
                 </div>
               </td>
             </tr>
