@@ -1,26 +1,29 @@
-<div class="border-box">
-    <h2>Runners</h2>
+<div class="container">
+    <div class="border-box">
+        <h2>Runners</h2>
 
-    <table class="table table-striped">
-        <thead>
-            <tr>
-            <th scope="col">#</th>
-            <th scope="col">Runner Name</th>
-            <th scope="col">Department</th>
-            <th scope="col">Version</th>
-            <th scope="col">Creation Date</th>
-            <th scope="col">Update Date</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let runner of runners; let i = index">
-                <th scope="row">{{ i + 1}}</th>
-                <td><a href="/runners/{{runner?._id}}">{{ runner.name }}</a></td>
-                <td>{{ runner.department }}</td>
-                <td>{{ runner.currentRevision }}</td>
-                <td>{{ runner.createdAt }}</td>
-                <td>{{ runner.updatedAt }}</td>
-            </tr>
-        </tbody>
-    </table>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Runner Name</th>
+                    <th scope="col">Department</th>
+                    <th scope="col">Version</th>
+                    <th scope="col">Creation Date</th>
+                    <th scope="col">Update Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let runner of runners; let i = index">
+                    <th scope="row">{{ i + 1}}</th>
+                    <td><a href="/runners/{{runner?._id}}">{{ runner.name }}</a></td>
+                    <td>{{ runner.department }}</td>
+                    <td>{{ runner.currentRevision }}</td>
+                    <td>{{ runner.createdAt }}</td>
+                    <td>{{ runner.updatedAt }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
 </div>

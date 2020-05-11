@@ -1,0 +1,32 @@
+#home {
+    display: flex;
+    align-items: center;
+    height: 90%;
+    font-size: large;
+}
+
+.header-first {
+    background-color: rgba(#ffb367, 0.5);
+    padding: 30px;
+    border-radius: 10px;
+}
+
+.header-second {
+    background-color: rgba(#ffe277, 0.5);
+    padding: 30px;
+    border-radius: 10px;
+}
+
+.header-third {
+    background-color: rgba(#ffe2bc, 0.5);
+    padding: 30px;
+    border-radius: 10px;
+}
+
+.row-margin {
+    margin-bottom: 4rem;
+}
+
+h2 {
+    margin-bottom: 2rem;
+}

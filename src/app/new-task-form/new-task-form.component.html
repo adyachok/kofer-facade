@@ -1,73 +1,75 @@
-<div class="border-box">
-  <h2>Create task</h2>
+<div class="container">
+  <div class="border-box">
+    <h2>Create task</h2>
 
-  <div *ngIf="this.modelMetatada !== undefined;else elseBlock" class="d-flex justify-content-center text-center">
-    <form [formGroup]="form" class="w-50 p-10">
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th scope="col">Parameter</th>
-            <th scope="col">Value</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Model name</td>
-            <td>{{ this.modelMetatada.name }}</td>
-          </tr>
-          <ng-container *ngFor="let unit_step of this.modelMetatada.business_metadata.data.unitSteps">
-            <tr *ngFor="let range of unit_step.params.training_ranges">
-              <td class="w-50">{{ range.name }}</td>
-              <td class="w-50">
-                <div class="form-group">
-                  <textarea *ngIf="range.type == 'string'; else numberInput" class="form-control" type = "string"
-                    formControlName="{{ unit_step.name + '.' + range.name + '.' + range.type }}" id="{{ range.name }}"
-                    placeholder="Your value"> </textarea>
-                  <ng-template #numberInput>
-                    <input class="form-control" type="number"
-                      formControlName="{{ unit_step.name + '.' + range.name + '.' + range.type }}" id="{{ range.name }}"
-                      placeholder="Your value">
-                  </ng-template>
-                </div>
-              </td>
+    <div *ngIf="this.modelMetatada !== undefined;else elseBlock" class="d-flex justify-content-center text-center">
+      <form [formGroup]="form" class="w-50 p-10">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Parameter</th>
+              <th scope="col">Value</th>
             </tr>
-          </ng-container>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Model name</td>
+              <td>{{ this.modelMetatada.name }}</td>
+            </tr>
+            <ng-container *ngFor="let unit_step of this.modelMetatada.business_metadata.data.unitSteps">
+              <tr *ngFor="let range of unit_step.params.training_ranges">
+                <td class="w-50">{{ range.name }}</td>
+                <td class="w-50">
+                  <div class="form-group">
+                    <textarea *ngIf="range.type == 'string'; else numberInput" class="form-control" type="string"
+                      formControlName="{{ unit_step.name + '.' + range.name + '.' + range.type }}" id="{{ range.name }}"
+                      placeholder="Your value"> </textarea>
+                    <ng-template #numberInput>
+                      <input class="form-control" type="number"
+                        formControlName="{{ unit_step.name + '.' + range.name + '.' + range.type }}"
+                        id="{{ range.name }}" placeholder="Your value">
+                    </ng-template>
+                  </div>
+                </td>
+              </tr>
+            </ng-container>
 
-        </tbody>
+          </tbody>
 
-      </table>
+        </table>
 
-
-      <div class="select">
-        <div class="custom-control custom-checkbox">
-          <input type="checkbox" [checked]="useRunner" class="custom-control-input" id="customCheck1"
-            (change)="changeRunnerSelectionState()" formContolName="selectedRunnerCheckbox">
-          <label class="custom-control-label" for="customCheck1">Run task with runner</label>
-        </div>
-        <!-- Disabled select-->
 
         <div class="select">
-          <select class="browser-default custom-select" formControlName="selectedRunner">
+          <div class="custom-control custom-checkbox">
+            <input type="checkbox" [checked]="useRunner" class="custom-control-input" id="customCheck1"
+              (change)="changeRunnerSelectionState()" formContolName="selectedRunnerCheckbox">
+            <label class="custom-control-label" for="customCheck1">Run task with runner</label>
+          </div>
+          <!-- Disabled select-->
 
-            <option ngValue="" disabled selected>Choose runner</option>
-            <option [ngValue]="runner._id" *ngFor="let runner of runners; let i = index">
-              {{runner.name}}&nbsp;-&nbsp;{{runner.department}}</option>
-          </select>
+          <div class="select">
+            <select class="browser-default custom-select" formControlName="selectedRunner">
+
+              <option ngValue="" disabled selected>Choose runner</option>
+              <option [ngValue]="runner._id" *ngFor="let runner of runners; let i = index">
+                {{runner.name}}&nbsp;-&nbsp;{{runner.department}}</option>
+            </select>
+          </div>
+
+
         </div>
 
 
-      </div>
-
-
-      <button type="submit" [disabled]="!form.valid" class="btn btn-primary"
-        (click)="submitTask($event)">Submit</button>
-    </form>
-  </div>
-  <ng-template #elseBlock>
-    <div class="alert alert-info text-center" role="alert">
-      Before create a task, please, select a model.
+        <button type="submit" [disabled]="!form.valid" class="btn btn-primary"
+          (click)="submitTask($event)">Submit</button>
+      </form>
     </div>
-  </ng-template>
+    <ng-template #elseBlock>
+      <div class="alert alert-info text-center" role="alert">
+        Before create a task, please, select a model.
+      </div>
+    </ng-template>
 
 
+  </div>
 </div>

@@ -1,23 +1,26 @@
-<div class="border-box">
-    <h2>Models</h2>
+<div class="container">
+    <div class="border-box">
+        <h2>Models</h2>
 
-    <table class="table table-striped">
-        <thead>
-            <tr>
-            <th scope="col">#</th>
-            <th scope="col">Model Name</th>
-            <th scope="col">Version</th>
-            <th scope="col">Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let modelMetadata of models; let i = index">
-            <th scope="row">{{ i + 1}}</th>
-            <td><a href="/models/{{modelMetadata._id}}">{{ modelMetadata.name }}</a></td>
-            <td>{{ modelMetadata.latest_version }}</td>
-            <td><i [id]="modelMetadata._id" class="fa fa-play-circle-o fa-lg" aria-hidden="true" (click)="triggerNewTaskCreation($event)" data-placement="top" ngbTooltip="Create an inference task"></i></td>
-            </tr>
-        </tbody>
-    </table>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Model Name</th>
+                    <th scope="col">Version</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let modelMetadata of models; let i = index">
+                    <th scope="row">{{ i + 1}}</th>
+                    <td><a href="/models/{{modelMetadata._id}}">{{ modelMetadata.name }}</a></td>
+                    <td>{{ modelMetadata.latest_version }}</td>
+                    <td><i [id]="modelMetadata._id" class="fa fa-play-circle-o fa-lg" aria-hidden="true"
+                            (click)="triggerNewTaskCreation($event)" data-placement="top"
+                            ngbTooltip="Create an inference task"></i></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
-

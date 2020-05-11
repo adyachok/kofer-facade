@@ -2,29 +2,38 @@
 // @import '~highlight.js/scss/androidstudio.scss';
 // color scheme from https://visme.co/blog/website-color-schemes/ (25)
 
-body {
-    background-color: #A8D0E6 !important;
+body, html {
+    background-color: #58b4ae !important;
+    height: 100%;
+    background-image: url(assets/img/chemist.png) !important;
+    background-position: center center;
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    font-family: 'B612', 'Roboto', 'Alegreya', 'Varela', 'Montserrat', sans-serif;
 }
 
-h2, h3, h4 {
-    color: #24305E;
-    font-family: 'Montserrat', sans-serif;    
-    margin-top: 2rem !important;
-    margin-bottom: 3rem !important;
-}
+// h2, h3, h4 {
+//     color: #24305E;
+//     font-family: 'Montserrat', sans-serif;    
+//     margin-top: 2rem !important;
+//     margin-bottom: 3rem !important;
+// }
 
-h2 , h3 {
-    padding-left: 6rem;
-    text-shadow: 1px 1px 1px #A8D0E6;
-}
+// h2 , h3 {
+//     padding-left: 6rem;
+//     text-shadow: 1px 1px 1px #A8D0E6;
+// }
 
-h4 {
-    padding-left: 1rem;
-}
+// h4 {
+//     padding-left: 1rem;
+// }
 
 .border-box {
     @extend .rounded-lg !optional;
-    border: 0.15rem solid  #374785;
+    border: 0.15rem solid  #ffb367;
     padding: 1rem;
     border-radius: 1rem;
     background-color: whitesmoke;

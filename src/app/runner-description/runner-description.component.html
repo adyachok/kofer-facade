@@ -1,40 +1,42 @@
+<div class="container">
+  <!-- https://stackoverflow.com/questions/51105507/change-active-bootstrap-tab-inside-angular-component -->
+  <div class="border-box">
+    <h3>Runner</h3>
+    <ul class="nav nav-tabs">
+      <li class="nav-item">
+        <a class="nav-link active" id="description-tab" [ngClass]="{'active':activeTab==='description'}"
+          (click)="setActiveTab('description')" data-toggle="tab" aria-controls="description">Description</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [ngClass]="{'active':activeTab==='code'}" (click)="setActiveTab('code')"
+          data-toggle="tab">Code</a>
+      </li>
+    </ul>
 
-<!-- https://stackoverflow.com/questions/51105507/change-active-bootstrap-tab-inside-angular-component -->
-<div class="border-box">
-  <h3>Runner</h3>
-  <ul class="nav nav-tabs">
-    <li class="nav-item">
-      <a class="nav-link active" id="description-tab"  [ngClass]="{'active':activeTab==='description'}" (click)="setActiveTab('description')"
-      data-toggle="tab" aria-controls="description">Description</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" [ngClass]="{'active':activeTab==='code'}" (click)="setActiveTab('code')"
-      data-toggle="tab">Code</a>
-    </li>
-  </ul>
-
-  <div class="tab-content">
+    <div class="tab-content">
       <div class="tab-pane fade show active" id="description" [ngClass]="{ 'active':activeTab==='description'}">
-  
+
         <div class="mt-5 mx-4 text-monospace">
-            <p>name: {{ runner?.name }}</p>
-            <p>current version: {{ runner?.currentRevision }}</p>
-            <p>description: {{runner?.description}}</p>
-            <p>created at: {{runner?.createdAt}}</p>
-            <p>updated at: {{runner?.updatedAt}}</p>
+          <p>name: {{ runner?.name }}</p>
+          <p>current version: {{ runner?.currentRevision }}</p>
+          <p>description: {{runner?.description}}</p>
+          <p>created at: {{runner?.createdAt}}</p>
+          <p>updated at: {{runner?.updatedAt}}</p>
         </div>
       </div>
       <div class="tab-pane fade show" id="code" [ngClass]="{ 'active':activeTab==='code'}">
         <h3 class="mt-4 pt-3 mx-4">Code</h3>
         <div class="mt-5 mx-4 text-monospace">
-            <p>commiter: {{runner?.file.commiter}}</p>
-            <p>commit hqsh: {{runner?.file.commitHash}}</p>
-            <p>created at: {{runner?.file.createdAt}}</p>
+          <p>commiter: {{runner?.file.commiter}}</p>
+          <p>commit hqsh: {{runner?.file.commitHash}}</p>
+          <p>created at: {{runner?.file.createdAt}}</p>
         </div>
         <div class="mt-5 mx-4">
-            <pre><code [highlight]="runner.file.code" [lineNumbers]="true"></code></pre>
-        </div>         
+          <pre><code [highlight]="runner.file.code" [lineNumbers]="true"></code></pre>
+        </div>
       </div>
+    </div>
   </div>
-</div>
 
+
+</div>
