@@ -1,8 +1,8 @@
 <!-- https://stackoverflow.com/questions/51105507/change-active-bootstrap-tab-inside-angular-component -->
-<div class="container">
+<div class="container cntr-height">
   <div class="border-box">
 
-    <h2>Model description</h2>
+    <h1 class="text-center">Model <span style="font-style: italic;">{{model?.name}}</span> datails</h1>
 
     <ul class="nav nav-tabs">
       <li class="nav-item">
@@ -19,21 +19,21 @@
       </li>
     </ul>
 
-    <div class="tab-content">
+    <div class="tab-content tab-height tab-pane-height">
       <div class="tab-pane fade show active" id="description" [ngClass]="{ 'active':activeTab==='description'}">
         <div class="mt-5 mx-4 text-monospace">
           <p>model name: {{ model?.name }}</p>
           <p>latest version: {{ model?.latest_version }}</p>
         </div>
       </div>
-      <div class="tab-pane fade show" id="business_metadata" [ngClass]="{ 'active':activeTab==='business_metadata'}">
+      <div class="tab-pane fade show tab-pane-height" id="business_metadata" [ngClass]="{ 'active':activeTab==='business_metadata'}">
         <div class="mt-5 mx-4">
           <p>
             <ngx-json-viewer [json]="model?.business_metadata"></ngx-json-viewer>
           </p>
         </div>
       </div>
-      <div class="tab-pane fade show" id="server_metadata" [ngClass]="{ 'active':activeTab==='server_metadata'}">
+      <div class="tab-pane fade show tab-pane-height" id="server_metadata" [ngClass]="{ 'active':activeTab==='server_metadata'}">
         <div class="mt-5 mx-4">
           <p>
             <ngx-json-viewer [json]="model?.server_metadata"></ngx-json-viewer>

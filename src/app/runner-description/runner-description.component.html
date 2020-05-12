@@ -1,7 +1,7 @@
-<div class="container">
+<div class="container cntr-height">
   <!-- https://stackoverflow.com/questions/51105507/change-active-bootstrap-tab-inside-angular-component -->
   <div class="border-box">
-    <h3>Runner</h3>
+    <h1 class="text-center">Runner <span style="font-style: italic;">{{ runner?.name }}</span></h1>
     <ul class="nav nav-tabs">
       <li class="nav-item">
         <a class="nav-link active" id="description-tab" [ngClass]="{'active':activeTab==='description'}"
@@ -13,8 +13,8 @@
       </li>
     </ul>
 
-    <div class="tab-content">
-      <div class="tab-pane fade show active" id="description" [ngClass]="{ 'active':activeTab==='description'}">
+    <div class="tab-content tab-height">
+      <div class="tab-pane fade show active tab-pane-height" id="description" [ngClass]="{ 'active':activeTab==='description'}">
 
         <div class="mt-5 mx-4 text-monospace">
           <p>name: {{ runner?.name }}</p>
@@ -24,7 +24,7 @@
           <p>updated at: {{runner?.updatedAt}}</p>
         </div>
       </div>
-      <div class="tab-pane fade show" id="code" [ngClass]="{ 'active':activeTab==='code'}">
+      <div class="tab-pane fade show tab-pane-height" id="code" [ngClass]="{ 'active':activeTab==='code'}">
         <h3 class="mt-4 pt-3 mx-4">Code</h3>
         <div class="mt-5 mx-4 text-monospace">
           <p>commiter: {{runner?.file.commiter}}</p>

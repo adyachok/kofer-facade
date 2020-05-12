@@ -1,24 +1,26 @@
-<div class="container">
-    <div class="border-box">
-        <h2>Tasks</h2>
+<div class="container cntr-height">
+    <div class="border-box overflow-auto" style="height: 90%;">
+        <h1 class="text-center">Tasks</h1>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Task Id</th>
+                        <th scope="col">Model Name</th>
+                        <th scope="col">Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let task of tasks; let i = index">
+                        <th scope="row">{{ i + 1}}</th>
+                        <td><a href="/tasks/{{task._id}}">{{ task._id }}</a></td>
+                        <td>{{ task.modelName }}</td>
+                        <td>{{ task.state }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Task Id</th>
-                    <th scope="col">Model Name</th>
-                    <th scope="col">Status</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let task of tasks; let i = index">
-                    <th scope="row">{{ i + 1}}</th>
-                    <td><a href="/tasks/{{task._id}}">{{ task._id }}</a></td>
-                    <td>{{ task.modelName }}</td>
-                    <td>{{ task.state }}</td>
-                </tr>
-            </tbody>
-        </table>
     </div>
 </div>

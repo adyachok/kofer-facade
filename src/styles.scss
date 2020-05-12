@@ -2,13 +2,12 @@
 // @import '~highlight.js/scss/androidstudio.scss';
 // color scheme from https://visme.co/blog/website-color-schemes/ (25)
 
-body, html {
-    min-height: 100%;
+html, body {
     height: 100%;
+    overflow: hidden;
 }
 
 body {
-    border: 2px solid red;
     background-color: #58b4ae !important;
     background-image: url(assets/img/chemist_1.png) !important;
     background-position: center center;
@@ -44,8 +43,7 @@ body {
     background-color: whitesmoke;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     padding-bottom: 5rem;
-    min-height: 80%;
-    overflow-y: auto;
+    height: 90%;
 }
 
 .border-box-inner {
@@ -97,6 +95,24 @@ body {
     color: #24305E;
 }
 
-h1, h2, h3 {
+h1, h2, h3, h4 {
     margin-bottom: 2rem !important;
+    margin-top: 2rem !important;
+}
+
+.cntr-height {
+    height: 93%;
+}
+
+.tab-height {
+    height: 95%;
+}
+
+.tab-pane-height {
+    height: 95%;
+    overflow-y: auto;
+}
+
+.result {
+    font-weight: bold;
 }
