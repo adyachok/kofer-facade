@@ -3,9 +3,14 @@
 // color scheme from https://visme.co/blog/website-color-schemes/ (25)
 
 body, html {
-    background-color: #58b4ae !important;
+    min-height: 100%;
     height: 100%;
-    background-image: url(assets/img/chemist.png) !important;
+}
+
+body {
+    border: 2px solid red;
+    background-color: #58b4ae !important;
+    background-image: url(assets/img/chemist_1.png) !important;
     background-position: center center;
     background-repeat: no-repeat;
     -webkit-background-size: cover;
@@ -39,6 +44,8 @@ body, html {
     background-color: whitesmoke;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     padding-bottom: 5rem;
+    min-height: 80%;
+    overflow-y: auto;
 }
 
 .border-box-inner {
